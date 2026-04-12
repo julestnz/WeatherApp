@@ -60,13 +60,14 @@ GET https://api.open-meteo.com/v1/forecast
   &current=temperature_2m,weathercode
   &daily=temperature_2m_max,temperature_2m_min
   &timezone=auto
+  &temperature_unit=celsius
 ```
 
 The widget reads:
-- `current.temperature_2m` — current temperature
+- `current.temperature_2m` — current temperature in °C
 - `current.weathercode` — mapped to a human-readable condition string
-- `daily.temperature_2m_max[0]` — today's high
-- `daily.temperature_2m_min[0]` — today's low
+- `daily.temperature_2m_max[0]` — today's high in °C
+- `daily.temperature_2m_min[0]` — today's low in °C
 
 WMO weather codes are mapped to condition strings in a local lookup table within the component (e.g. `0` → "Clear sky", `3` → "Overcast", `61` → "Rain").
 
