@@ -1,5 +1,6 @@
 ---
 import '@picocss/pico/css/pico.min.css';
+import WeatherWidget from '../components/WeatherWidget.svelte';
 ---
 
 <html lang="en">
@@ -11,6 +12,7 @@ import '@picocss/pico/css/pico.min.css';
   <body>
     <main class="container" style="max-width: 600px; margin-top: 4rem;">
       <h1>Weather</h1>
+      <WeatherWidget client:load />
     </main>
   </body>
 </html>
