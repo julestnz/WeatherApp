@@ -1,43 +1,41 @@
-# Astro Starter Kit: Minimal
+# WeatherApp
+
+A small weather lookup app, built as a pairing/teaching exercise: search a
+city, disambiguate if there are multiple matches, and see current conditions
+plus today's high/low.
+
+Built with **Astro** + a **Svelte** island for the interactive widget, styled
+with **Pico CSS**, and backed by the free [Open-Meteo](https://open-meteo.com/)
+geocoding + forecast APIs — no API key required.
+
+## Why it exists
+
+This was a live Claude Code pairing session: one person driving, one person
+new to Claude Code following along and learning the workflow. The goal was a
+small, real feature (not a toy) built incrementally, with each step explained
+along the way rather than generated in one big jump.
+
+## Stack
+
+- [Astro](https://astro.build/) — static-first site framework, page shell
+- [Svelte 5](https://svelte.dev/) — the interactive `WeatherWidget` component
+  (`src/components/WeatherWidget.svelte`), using Svelte 5 runes (`$state`)
+- [Pico CSS](https://picocss.com/) — classless/minimal styling
+- [Open-Meteo](https://open-meteo.com/) geocoding + forecast APIs
+
+## Running it
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## How it works
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+1. Type a city name and submit.
+2. If the geocoding API returns multiple matches (e.g. more than one
+   "Springfield"), the widget shows a disambiguation list instead of
+   guessing.
+3. Once a single location is resolved, it fetches current temperature,
+   condition (mapped from Open-Meteo's WMO weather codes), and today's
+   high/low.
